@@ -1,0 +1,59 @@
+.tela-jogo {
+    width: 1025px;
+    height: 839px;
+    background-color: red;
+    margin: auto;
+}
+
+.container-jogo {
+    width: 934px;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.foto-forca {
+    width: 400px;
+    height: 466px;
+}
+
+.botao-e-palavra {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.escolher-palavra {
+    width: 200px;
+    height: 60px;
+    color: #FFFFFF;
+    background-color: #27AE60;
+    border: none;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 50px;
+    color: #000000;
+    margin-bottom: 35px;
+}
+
+.letras {
+    background-color: green;
+    width: 676px;
+    margin: auto;
+    margin-top: 64px;
+}
+
+.letra {
+    width: 40px;
+    height: 40px;
+    background-color: #9FAAB5;
+    border: 1px solid #7AA7C7;
+    font-size: 16px;
+    color: #798A9F;
+    margin: 6px 6px;
+}
