@@ -1,18 +1,19 @@
 
 
-export default function Letras() {
+export default function Letras(props) {
+    const { alfabeto, jogoIniciado, letrasNaoClicadas } = props;
+
     return (
         <div className="letras">
-            {alfabeto.map(letra => <Letra letra={letra} />)}
+            {alfabeto.map(letra => <Letra letra={letra} letrasNaoClicadas={letrasNaoClicadas} />)}
         </div>
     )
 }
 
-const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
 function Letra(props) {
+    const { letrasNaoClicadas, letra } = props;
 
     return (
-        <button className="letra">{(props.letra).toUpperCase()}</button>
+        <button className={letrasNaoClicadas.includes(letra) ? "letra ativa" : "letra"} disabled={letrasNaoClicadas.includes(letra) ? false : true} >{letra.toUpperCase()}</button>
     )
 }
