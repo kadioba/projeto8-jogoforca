@@ -1,3 +1,7 @@
+button:hover {
+    cursor: pointer;
+}
+
 .tela-jogo {
     width: 1025px;
     background-color: red;
