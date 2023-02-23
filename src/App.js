@@ -40,8 +40,13 @@ export default function App() {
         setLetrasClicadas={setLetrasClicadas}
         letrasClicadas={letrasClicadas}
         setLetrasParaGanhar={setLetrasParaGanhar}
+        letrasParaGanhar={letrasParaGanhar}
         erros={erros}
-        setErros={setErros} />
+        setErros={setErros}
+        setPalavraDisplay={setPalavraDisplay}
+        palavraDisplay={palavraDisplay}
+      />
+
     </div>
   );
 }
