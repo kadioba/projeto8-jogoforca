@@ -53,7 +53,7 @@ function Letra(props) {
             }
             setPalavraDisplay(palavraDisplayAtualizada);
             desativaBotoes();
-
+            resetaJogo();
         }
     }
 
