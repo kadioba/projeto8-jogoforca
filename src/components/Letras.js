@@ -109,7 +109,7 @@ function Letra(props) {
     }
 
     return (
-        <button onClick={() => verificaLetra(letra)} className={classeLetra(letra)} disabled={estadoLetra(letra)} >{letra.toUpperCase()}</button>
+        <button data-test="letter" onClick={() => verificaLetra(letra)} className={classeLetra(letra)} disabled={estadoLetra(letra)} >{letra.toUpperCase()}</button>
     )
 }
 

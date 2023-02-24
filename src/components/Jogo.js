@@ -77,10 +77,10 @@ export default function Jogo(props) {
 
     return (
         <div className="container-jogo">
-            <img src={contaErros()} alt="" className="foto-forca" />
+            <img src={contaErros()} alt="" className="foto-forca" data-test="game-image" />
             <div className="botao-e-palavra">
-                <button className="escolher-palavra" onClick={iniciarJogo}>Escolher Palavra</button>
-                <h1 className={classePalavra()}>{palavraDisplay}</h1>
+                <button className="escolher-palavra" onClick={iniciarJogo} data-test="choose-word"   >Escolher Palavra</button>
+                <h1 className={classePalavra()} data-test="word">{palavraDisplay}</h1>
             </div>
         </div>
     );
