@@ -30,8 +30,10 @@ export default function App() {
         arrayPalavraSelecionada={arrayPalavraSelecionada}
         setPalavraDisplay={setPalavraDisplay}
         palavraDisplay={palavraDisplay}
-        setLetrasParaGanhar={setLetrasParaGanhar} />
+        setLetrasParaGanhar={setLetrasParaGanhar}
+        letrasParaGanhar={letrasParaGanhar} />
       <Letras
+        setJogoIniciado={setJogoIniciado}
         jogoIniciado={jogoIniciado}
         alfabeto={alfabeto}
         letrasNaoClicadas={letrasNaoClicadas}

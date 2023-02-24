@@ -1,33 +1,69 @@
 
 
 export default function Letras(props) {
-    const { letrasParaGanhar, alfabeto, palavraDisplay, setPalavraDisplay, setLetrasParaGanhar, jogoIniciado, setLetrasNaoClicadas, letrasNaoClicadas, arrayPalavraSelecionada, setLetrasClicadas, letrasClicadas, erros, setErros } = props;
+    const { setJogoIniciado, letrasParaGanhar, alfabeto, palavraDisplay, setPalavraDisplay, setLetrasParaGanhar, jogoIniciado, setLetrasNaoClicadas, letrasNaoClicadas, arrayPalavraSelecionada, setLetrasClicadas, letrasClicadas, erros, setErros } = props;
 
     return (
         <div className="letras">
-            {alfabeto.map(letra => <Letra letrasParaGanhar={letrasParaGanhar} palavraDisplay={palavraDisplay} setLetrasParaGanhar={setLetrasParaGanhar} setPalavraDisplay={setPalavraDisplay} erros={erros} setErros={setErros} arrayPalavraSelecionada={arrayPalavraSelecionada} jogoIniciado={jogoIniciado} alfabeto={alfabeto} letra={letra} letrasNaoClicadas={letrasNaoClicadas} setLetrasNaoClicadas={setLetrasNaoClicadas} setLetrasClicadas={setLetrasClicadas} letrasClicadas={letrasClicadas} />)}
+            {alfabeto.map(letra => <Letra setJogoIniciado={setJogoIniciado} letrasParaGanhar={letrasParaGanhar} palavraDisplay={palavraDisplay} setLetrasParaGanhar={setLetrasParaGanhar} setPalavraDisplay={setPalavraDisplay} erros={erros} setErros={setErros} arrayPalavraSelecionada={arrayPalavraSelecionada} jogoIniciado={jogoIniciado} alfabeto={alfabeto} letra={letra} letrasNaoClicadas={letrasNaoClicadas} setLetrasNaoClicadas={setLetrasNaoClicadas} setLetrasClicadas={setLetrasClicadas} letrasClicadas={letrasClicadas} />)}
         </div>
     )
 }
 
 function Letra(props) {
-    const { letrasParaGanhar, palavraDisplay, setLetrasParaGanhar, setLetrasNaoClicadas, setPalavraDisplay, letrasNaoClicadas, letra, alfabeto, setLetrasClicadas, letrasClicadas, jogoIniciado, arrayPalavraSelecionada, erros, setErros } = props;
+    const { setJogoIniciado, letrasParaGanhar, palavraDisplay, setLetrasParaGanhar, setLetrasNaoClicadas, setPalavraDisplay, letrasNaoClicadas, letra, alfabeto, setLetrasClicadas, letrasClicadas, jogoIniciado, arrayPalavraSelecionada, erros, setErros } = props;
 
     function verificaLetra(letraRecebida) {
         console.log([...letrasClicadas, letraRecebida]);
         setLetrasClicadas([...letrasClicadas, letraRecebida]);
         const indiceNoAlfabeto = alfabeto.indexOf(letraRecebida);
         if (arrayPalavraSelecionada.includes(letraRecebida)) {
-            console.log("deu certo")
             revelarLetra(letraRecebida);
         }
         else {
-            setErros(erros + 1);
+            verificaDerrota();
         }
+    }
+
+    function resetaJogo() {
+        setJogoIniciado(false);
+        setLetrasClicadas([]);
+        setErros(0);
+    }
+
+    function verificaVitoria(qntdLetras) {
+        if (letrasParaGanhar - qntdLetras === 0) {
+            desativaBotoes();
+            resetaJogo();
+        }
+    }
+
+    function verificaDerrota() {
+        let errosAtualizados = erros + 1;
+        setErros(errosAtualizados);
+        if (errosAtualizados === 6) {
+            let palavraDisplayAtualizada = "";
+            for (let i = 0; i < arrayPalavraSelecionada.length * 2 - 1; i++) {
+                if (i % 2 === 0) {
+                    palavraDisplayAtualizada = palavraDisplayAtualizada + arrayPalavraSelecionada[i / 2];
+                }
+                else {
+                    palavraDisplayAtualizada = palavraDisplayAtualizada + " ";
+                }
+            }
+            setPalavraDisplay(palavraDisplayAtualizada);
+            desativaBotoes();
+
+        }
+    }
+
+    function desativaBotoes() {
+        setLetrasClicadas(alfabeto);
     }
 
     function revelarLetra(letraRecebida) {
         let palavraDisplayAtualizada = "";
+        let qntdLetrasAcertadas = 0;
         for (let i = 0; i < arrayPalavraSelecionada.length * 2 - 1; i++) {
             if (i % 2 === 0) {
                 if (palavraDisplay[i] !== '_') {
@@ -37,6 +73,7 @@ function Letra(props) {
 
                 else if (arrayPalavraSelecionada[i / 2] == letraRecebida) {
                     palavraDisplayAtualizada = palavraDisplayAtualizada + letraRecebida;
+                    qntdLetrasAcertadas++
                 }
                 else {
                     palavraDisplayAtualizada = palavraDisplayAtualizada + "_";
@@ -48,7 +85,8 @@ function Letra(props) {
 
         }
         setPalavraDisplay(palavraDisplayAtualizada);
-        setLetrasParaGanhar(letrasParaGanhar - 1);
+        setLetrasParaGanhar(letrasParaGanhar - qntdLetrasAcertadas);
+        verificaVitoria(qntdLetrasAcertadas)
 
     }
 

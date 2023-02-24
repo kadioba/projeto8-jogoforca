@@ -9,7 +9,7 @@ import palavras from "../palavras";
 
 export default function Jogo(props) {
 
-    const { palavraDisplay, setPalavraDisplay, jogoIniciado, setJogoIniciado, setLetrasNaoClicadas, alfabeto, erros, setArrayPalavraSelecionada, arrayPalavraSelecionada, setLetrasParaGanhar } = props;
+    const { letrasParaGanhar, palavraDisplay, setPalavraDisplay, jogoIniciado, setJogoIniciado, setLetrasNaoClicadas, alfabeto, erros, setArrayPalavraSelecionada, arrayPalavraSelecionada, setLetrasParaGanhar } = props;
 
     function iniciarJogo() {
         if (!jogoIniciado) {
@@ -66,12 +66,21 @@ export default function Jogo(props) {
         }
     }
 
+    function classePalavra() {
+        if (erros === 6) {
+            return "perdeu-o-jogo";
+        }
+        else if (letrasParaGanhar === 0) {
+            return "ganhou-o-jogo"
+        }
+    }
+
     return (
         <div className="container-jogo">
             <img src={contaErros()} alt="" className="foto-forca" />
             <div className="botao-e-palavra">
                 <button className="escolher-palavra" onClick={iniciarJogo}>Escolher Palavra</button>
-                <h1>{palavraDisplay}</h1>
+                <h1 className={classePalavra()}>{palavraDisplay}</h1>
             </div>
         </div>
     );
