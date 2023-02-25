@@ -16,7 +16,7 @@ export default function App() {
   const [arrayPalavraSelecionada, setArrayPalavraSelecionada] = React.useState([]);
   const [palavraDisplay, setPalavraDisplay] = React.useState("");
   const [letrasParaGanhar, setLetrasParaGanhar] = React.useState(null);
-  console.log(letrasParaGanhar)
+  console.log(erros)
 
   return (
     <div className="tela-jogo">
@@ -31,7 +31,9 @@ export default function App() {
         setPalavraDisplay={setPalavraDisplay}
         palavraDisplay={palavraDisplay}
         setLetrasParaGanhar={setLetrasParaGanhar}
-        letrasParaGanhar={letrasParaGanhar} />
+        letrasParaGanhar={letrasParaGanhar}
+        setLetrasClicadas={setLetrasClicadas}
+        setErros={setErros} />
       <Letras
         setJogoIniciado={setJogoIniciado}
         jogoIniciado={jogoIniciado}

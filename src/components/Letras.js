@@ -26,8 +26,7 @@ function Letra(props) {
 
     function resetaJogo() {
         setJogoIniciado(false);
-        setLetrasClicadas([]);
-        setErros(0);
+
     }
 
     function verificaVitoria(qntdLetras) {

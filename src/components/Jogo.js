@@ -9,11 +9,13 @@ import palavras from "../palavras";
 
 export default function Jogo(props) {
 
-    const { letrasParaGanhar, palavraDisplay, setPalavraDisplay, jogoIniciado, setJogoIniciado, setLetrasNaoClicadas, alfabeto, erros, setArrayPalavraSelecionada, setLetrasParaGanhar } = props;
+    const { setErros, setLetrasClicadas, letrasParaGanhar, palavraDisplay, setPalavraDisplay, jogoIniciado, setJogoIniciado, setLetrasNaoClicadas, alfabeto, erros, setArrayPalavraSelecionada, setLetrasParaGanhar } = props;
 
     function iniciarJogo() {
         if (!jogoIniciado) {
             setJogoIniciado(true);
+            setLetrasClicadas([]);
+            setErros(0);
             setLetrasNaoClicadas(alfabeto);
             escolhePalavra();
         }
@@ -77,10 +79,10 @@ export default function Jogo(props) {
 
     return (
         <div className="container-jogo">
-            <img src={contaErros()} alt="" className="foto-forca" data-test="game-image" />
+            <img data-test="game-image" src={contaErros()} alt="" className="foto-forca" />
             <div className="botao-e-palavra">
                 <button className="escolher-palavra" onClick={iniciarJogo} data-test="choose-word"   >Escolher Palavra</button>
-                <h1 className={classePalavra()} data-test="word">{palavraDisplay}</h1>
+                <h1 data-test="word" className={classePalavra()} >{palavraDisplay}</h1>
             </div>
         </div>
     );
