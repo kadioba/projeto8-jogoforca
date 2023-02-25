@@ -1,22 +1,21 @@
 
 
 export default function Letras(props) {
-    const { setJogoIniciado, letrasParaGanhar, alfabeto, palavraDisplay, setPalavraDisplay, setLetrasParaGanhar, jogoIniciado, setLetrasNaoClicadas, letrasNaoClicadas, arrayPalavraSelecionada, setLetrasClicadas, letrasClicadas, erros, setErros } = props;
+    const { setJogoIniciado, letrasParaGanhar, alfabeto, palavraDisplay, setPalavraDisplay, setLetrasParaGanhar, jogoIniciado, arrayPalavraSelecionada, setLetrasClicadas, letrasClicadas, erros, setErros } = props;
 
     return (
         <div className="letras">
-            {alfabeto.map(letra => <Letra setJogoIniciado={setJogoIniciado} letrasParaGanhar={letrasParaGanhar} palavraDisplay={palavraDisplay} setLetrasParaGanhar={setLetrasParaGanhar} setPalavraDisplay={setPalavraDisplay} erros={erros} setErros={setErros} arrayPalavraSelecionada={arrayPalavraSelecionada} jogoIniciado={jogoIniciado} alfabeto={alfabeto} letra={letra} letrasNaoClicadas={letrasNaoClicadas} setLetrasNaoClicadas={setLetrasNaoClicadas} setLetrasClicadas={setLetrasClicadas} letrasClicadas={letrasClicadas} />)}
+            {alfabeto.map(letra => <Letra key={letra} setJogoIniciado={setJogoIniciado} letrasParaGanhar={letrasParaGanhar} palavraDisplay={palavraDisplay} setLetrasParaGanhar={setLetrasParaGanhar} setPalavraDisplay={setPalavraDisplay} erros={erros} setErros={setErros} arrayPalavraSelecionada={arrayPalavraSelecionada} jogoIniciado={jogoIniciado} alfabeto={alfabeto} letra={letra} setLetrasClicadas={setLetrasClicadas} letrasClicadas={letrasClicadas} />)}
         </div>
     )
 }
 
 function Letra(props) {
-    const { setJogoIniciado, letrasParaGanhar, palavraDisplay, setLetrasParaGanhar, setLetrasNaoClicadas, setPalavraDisplay, letrasNaoClicadas, letra, alfabeto, setLetrasClicadas, letrasClicadas, jogoIniciado, arrayPalavraSelecionada, erros, setErros } = props;
+    const { setJogoIniciado, letrasParaGanhar, palavraDisplay, setLetrasParaGanhar, setPalavraDisplay, letra, alfabeto, setLetrasClicadas, letrasClicadas, jogoIniciado, arrayPalavraSelecionada, erros, setErros } = props;
 
     function verificaLetra(letraRecebida) {
         console.log([...letrasClicadas, letraRecebida]);
         setLetrasClicadas([...letrasClicadas, letraRecebida]);
-        const indiceNoAlfabeto = alfabeto.indexOf(letraRecebida);
         if (arrayPalavraSelecionada.includes(letraRecebida)) {
             revelarLetra(letraRecebida);
         }
@@ -71,7 +70,7 @@ function Letra(props) {
 
                 }
 
-                else if (arrayPalavraSelecionada[i / 2] == letraRecebida) {
+                else if (arrayPalavraSelecionada[i / 2] === letraRecebida) {
                     palavraDisplayAtualizada = palavraDisplayAtualizada + letraRecebida;
                     qntdLetrasAcertadas++
                 }

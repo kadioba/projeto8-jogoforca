@@ -9,7 +9,7 @@ import palavras from "../palavras";
 
 export default function Jogo(props) {
 
-    const { letrasParaGanhar, palavraDisplay, setPalavraDisplay, jogoIniciado, setJogoIniciado, setLetrasNaoClicadas, alfabeto, erros, setArrayPalavraSelecionada, arrayPalavraSelecionada, setLetrasParaGanhar } = props;
+    const { letrasParaGanhar, palavraDisplay, setPalavraDisplay, jogoIniciado, setJogoIniciado, setLetrasNaoClicadas, alfabeto, erros, setArrayPalavraSelecionada, setLetrasParaGanhar } = props;
 
     function iniciarJogo() {
         if (!jogoIniciado) {
