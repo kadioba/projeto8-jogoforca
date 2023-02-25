@@ -67,9 +67,9 @@ h1 {
 }
 
 .perdeu-o-jogo {
-    color: red;
+    color: #FF0000;
 }
 
 .ganhou-o-jogo {
-    color: green;
+    color: #27AE60;
 }
