@@ -4,13 +4,11 @@ button:hover {
 
 .tela-jogo {
     width: 1025px;
-    background-color: red;
     margin: auto;
 }
 
 .container-jogo {
     width: 934px;
-    background-color: blue;
     display: flex;
     justify-content: space-between;
     margin: auto;
@@ -36,16 +34,23 @@ button:hover {
     background-color: #27AE60;
     border: none;
     border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
 }
 
 h1 {
     font-size: 50px;
     color: #000000;
     margin-bottom: 35px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 68px;
 }
 
 .letras {
-    background-color: green;
     width: 676px;
     margin: auto;
     margin-top: 64px;
@@ -59,6 +64,10 @@ h1 {
     font-size: 16px;
     color: #798A9F;
     margin: 6px 6px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
 }
 
 .ativa {
